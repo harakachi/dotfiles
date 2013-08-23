@@ -1,0 +1,7 @@
+[user]
+	name = harakachi
+	email = harakachi@gmail.com
+[color]
+	ui = auto
+[core]
+    excludesfile = ~/.gitignore
