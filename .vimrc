@@ -10,7 +10,8 @@ set matchpairs& matchpairs+=<:>
 " 対応括弧をハイライト表示する
 set showmatch
 
-colorscheme darkblue
+" colorscheme darkblue
+colorscheme desert
 
 " NeoBundle
 " mkdir -p ~/.vim/bundle
@@ -44,14 +45,24 @@ NeoBundle 'thinca/vim-quickrun'
 " ======= [[[ neocomplcache config ]]] ======
 " ex) http://vim-users.jp/2010/10/hack177/
 "     http://vim-users.jp/2010/11/hack185/
-let g:acp_enableAtStartup = 0
+
+" neocomplcacheを起動時に有効化する設定
 let g:neocomplcache_enable_at_startup = 1
+
+" 大文字が入力されるまで大文字小文字の区別を無視する
 let g:neocomplcache_enable_smart_case = 1
+
+" camel case機能を有効化
 let g:neocomplcache_enable_camel_case_completion = 1
+
+" _区切りの補完を有効化
 let g:neocomplcache_enable_underbar_completion = 1
+
+" シンタックスをキャッシュするときの最小文字長
 let g:neocomplcache_min_syntax_length = 3
 
 " dictionary
+" ファイルタイプ毎にneocomplcacheのディクショナリを設定する
 " $ mkdir ~/.vim/dict
 " $ cd ~/.vim/dict
 " $ wget https://raw.github.com/Cside/dotfiles/master/.vim/dict/perl.dict
@@ -75,14 +86,15 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " https://raw.github.com/gist/2146105/464170751812997fc3b655cb547e2b5a929e9eb6/perl.snip
 "
 " Plugin key-mappings.
+" <C-k>でスニペットの展開をできるようにします
+" smapも同時に設定しないと、デフォルト値が選択されているときに展開やジャンプがされません
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
+" 前回行われた補完をキャンセルします。
 inoremap <expr><C-g> neocomplcache#undo_completion()
+
+" 補完候補のなかから、共通する部分を補完します。ちょうど、シェルの補完のような動作です。
 inoremap <expr><C-l> neocomplcache#complete_common_string()
                      
 " Recommended key-mappings.
@@ -91,13 +103,23 @@ inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
+" <CR>で選択後、改行しないように
+inoremap <expr><CR>  pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
+
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" 現在選択している候補を確定します。
 inoremap <expr><C-y>  neocomplcache#close_popup()
+
+" 現在選択している候補をキャンセルし、ポップアップを閉じます。
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
-" AutoComplPop like behavior.
-"let g:neocomplcache_enable_auto_select = 1
 
 autocmd BufNewFile,BufRead *.psgi   set filetype=perl
 autocmd BufNewFile,BufRead *.t      set filetype=perl
