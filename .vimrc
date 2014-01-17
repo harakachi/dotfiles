@@ -7,6 +7,7 @@ set number
 set backspace=indent,eol,start
 " 対応括弧に<と>のペアを追加
 set matchpairs& matchpairs+=<:>
+
 " 対応括弧をハイライト表示する
 set showmatch
 
@@ -31,6 +32,7 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'ujihisa/unite-colorscheme'
