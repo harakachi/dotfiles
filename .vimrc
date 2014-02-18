@@ -11,8 +11,14 @@ set matchpairs& matchpairs+=<:>
 " 対応括弧をハイライト表示する
 set showmatch
 
+" 文字コード自動判別
+set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+
 " colorscheme darkblue
 colorscheme desert
+
+" buffer操作
+nmap bb :ls<CR>:buf 
 
 " NeoBundle
 " mkdir -p ~/.vim/bundle
