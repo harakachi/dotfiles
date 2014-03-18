@@ -14,6 +14,10 @@ install wget
 install curl
 install byobu
 
+# ricty
+tap sanemat/font
+install ricty
+
 # .dmg apps
 cask install google-chrome
 cask install google-japanese-ime
