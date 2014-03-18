@@ -1,3 +1,4 @@
+syntax on
 set t_Co=256
 set tabstop=4
 set shiftwidth=4
@@ -10,9 +11,10 @@ set matchpairs& matchpairs+=<:>
 
 " 対応括弧をハイライト表示する
 set showmatch
+set cursorline
 
 " 文字コード自動判別
-set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+" set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 
 " colorscheme darkblue
 colorscheme desert
@@ -43,6 +45,7 @@ NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'ujihisa/unite-colorscheme'
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+NeoBundle 'Lokaltog/vim-powerline'
 
 " add more
 NeoBundle 'petdance/vim-perl'
@@ -134,4 +137,8 @@ autocmd BufNewFile,BufRead *.t      set filetype=perl
 
 filetype plugin indent on     " required!
 filetype indent on
-syntax on
+
+" power line
+let g:Powerline_symbols = 'fancy'
+
+hi cursorline term=reverse cterm=none ctermbg=234
