@@ -6,3 +6,5 @@
 [core]
     excludesfile = ~/.gitignore
 	editor = vim
+	precomposeunicode = true
+	quotepath = false
