@@ -8,3 +8,4 @@
 	editor = vim
 	precomposeunicode = true
 	quotepath = false
+    pager = LESS=-R less

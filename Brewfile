@@ -13,6 +13,8 @@ install tree
 install wget
 install curl
 install byobu
+install boot2docker
+install docker
 
 # ricty
 tap sanemat/font
@@ -30,6 +32,10 @@ cask install github
 cask install mindnode-pro
 cask install hyperswitch
 cask install appcleaner
+cask install virtualbox
+cask install vagrant
+cask install clipmenu
+
 # cask install kobito
 # cask install yorufukurou
 

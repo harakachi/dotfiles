@@ -19,9 +19,6 @@ set cursorline
 " colorscheme darkblue
 colorscheme desert
 
-" buffer操作
-nmap bb :ls<CR>:buf 
-
 " NeoBundle
 " mkdir -p ~/.vim/bundle
 " git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
@@ -89,6 +86,12 @@ if !exists('g:neocomplcache_keyword_patterns')
       let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+"buffer操作
+map <silent>    <F2>    :bp<cr>
+map <silent>    <F3>    :bn<cr>
+
+nmap bb :ls<CR>:buf 
 
 " snipet
 " $ mkdir ~/.vim/snippets
